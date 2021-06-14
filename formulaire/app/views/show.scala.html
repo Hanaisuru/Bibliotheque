@@ -1,0 +1,8 @@
+@(p: Person)
+@main("Liste des personnes") {
+<Title>@p.id</Title> 
+
+ @p.firstname, @p.age years old
+ 
+ <a href="@routes.HomeController.update(p.id)">Edit cette personne</a>
+}

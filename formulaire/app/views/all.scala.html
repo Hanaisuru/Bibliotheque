@@ -1,0 +1,11 @@
+ @(liste: List[Person])
+@main("Liste des personnes") {
+<Title>Liste des @liste.size() personnes</Title> 
+<ul>
+  @for(p <- liste) {
+   <li> <a href ="@routes.HomeController.show(p.id)"> @p.firstname, @p.age
+years old </a > </li >
+ 
+   }
+</ul> 
+}

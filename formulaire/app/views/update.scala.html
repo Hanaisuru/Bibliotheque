@@ -1,0 +1,14 @@
+@(pForm: Form[Person], id: Long)(implicit request : play.mvc.Http.Request, messages : play.i18n.Messages)
+
+@main("Edit") {
+@helper.form(action = routes.HomeController.updateOk(id)) {
+@helper.CSRF.formField
+@helper.inputText(pForm("firstname")) 
+@helper.select(field = pForm("age"),options = Seq("18"->"18", "19"->"19","20"->"20", "21"->"21", "22"->"22", "23"->"23", "24"->"24","25"->"25"))
+<input type="submit" value="Say Hello"/>
+}
+<Title>@id</Title> 
+
+
+<a href ="@routes.HomeController.show(id)">la personne</a>
+}
