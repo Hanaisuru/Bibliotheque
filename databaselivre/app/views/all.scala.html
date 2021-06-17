@@ -1,0 +1,11 @@
+ @(liste: List[Livre])
+@main("Liste des livres") {
+<Title>Liste des @liste.size() personnes</Title> 
+<h1>Ajouter un livre? <a href="@routes.HomeController.sayhelloform">Cliquez ici!</a> </h1>
+<ol>
+  @for(l <- liste) {
+            <li> <a href ="@routes.HomeController.show(l.getId)">Livre: @l.getTitre, Ecrit par: @l.getAuteur, Parue en: @l.getAnneeParue, au prix de: @l.getPrix €</a > <a href="@routes.HomeController.delete(l.getId)"><button name="delete">Supprimer le livre</button></a> </li >
+ 
+   }
+</ol> 
+}

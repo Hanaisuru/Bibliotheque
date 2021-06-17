@@ -1,0 +1,16 @@
+@(lForm: Form[Livre], id: Long)(implicit request : play.mvc.Http.Request, messages : play.i18n.Messages)
+
+@main("Edit") {
+@helper.form(action = routes.HomeController.updateOk(id)) {
+@helper.CSRF.formField
+@helper.inputText(lForm("titre"))
+@helper.inputText(lForm("auteur"))
+@helper.inputText(lForm("annee de parution"))
+@helper.inputText(lForm("prix"))
+<input type="submit" value="Valider"/>
+}
+<Title>@id</Title> 
+
+
+<a href ="@routes.HomeController.show(id)">Le livre</a>
+}

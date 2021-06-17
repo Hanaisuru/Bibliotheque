@@ -1,0 +1,12 @@
+@import play.mvc.Http.Request
+@(lForm: Form[Livre])(implicit request: Request, messages: play.i18n.Messages)
+
+@main("Merci de renseigner les informations du livre") {
+@helper.form(action = routes.HomeController.helloworldform) {
+@helper.CSRF.formField
+@helper.inputText(lForm("titre"))
+@helper.inputText(lForm("auteur"))
+@helper.inputText(lForm("annee de parution"))
+@helper.inputText(lForm("prix"))
+<input type="submit" value="Valider"/> }
+}

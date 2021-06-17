@@ -1,0 +1,8 @@
+@(a: Livre) 
+@main("Livre ..."){
+    Hello @a.getTitre, @a.getAuteur, @a.getAnneeParue, @a.getPrix € saved 
+<br>
+<h1>Voir la liste des livres? <a href="@routes.HomeController.all">Cliquez ici!</a></h1>
+<br>
+<h1>Ajouter un livre? <a href="@routes.HomeController.sayhelloform">Cliquez ici!</a> </h1>
+}
