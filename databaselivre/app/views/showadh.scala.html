@@ -1,0 +1,8 @@
+@(adh: Adherent)
+@main("Liste des Adhérents") {
+<Title>@adh.getIdAdh</Title> 
+
+ @adh.getNom, @adh.getPrenom, @adh.getNbAnneeAdh, @adh.getAdherentMtn 
+ <a href="@routes.HomeController.updateadh(adh.getIdAdh)">Modifier cette personne</a> <br>
+<a href="@routes.HomeController.deleteadh(adh.getIdAdh)"><button name="delete">Supprimer cette personne</button></a>
+}

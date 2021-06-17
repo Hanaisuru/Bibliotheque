@@ -1,6 +1,6 @@
  @(liste: List[Livre])
 @main("Liste des livres") {
-<Title>Liste des @liste.size() personnes</Title> 
+<Title>Liste des @liste.size() livres</Title> 
 <h1>Ajouter un livre? <a href="@routes.HomeController.sayhelloform">Cliquez ici!</a> </h1>
 <ol>
   @for(l <- liste) {

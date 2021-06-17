@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Livre;
+import models.Adherent;
 import views.html.*;
 import play.mvc.*;
 import java.util.List ; 
@@ -18,11 +19,13 @@ public class HomeController extends Controller {
     @Inject
     FormFactory formFactory; 
     Form <Livre> livreForm ;
+    Form <Adherent> adherentForm;
     MessagesApi messagesApi;
     
     @Inject
     public HomeController(FormFactory formFactory, MessagesApi messagesApi) {
      this.livreForm = formFactory.form(Livre.class);
+     this.adherentForm=formFactory.form(Adherent.class);
      this.messagesApi = messagesApi;
     }
     
@@ -61,9 +64,33 @@ public class HomeController extends Controller {
         return ok(views.html.sayhello.render());
     }
     
+    public Result sayhelloformadh (Http.Request request) {
+        adherentForm = formFactory.form(Adherent.class) ;
+        return ok(sayhelloformadh.render(adherentForm, request, messagesApi.preferred(request))) ; 
+    }
+    
+    public Result helloworldformadh(Http.Request request) {
+       final Form<Adherent> aForm = adherentForm.bindFromRequest(request) ; 
+    //    if (pForm.hasErrors()){
+      //      return badRequest(sayhelloform.render(pForm,request, messagesApi.preferred(request)));
+    //    }
+    //    else{
+            Adherent b = aForm.get();
+            b.save();
+        return ok(helloworldformadh.render(b)) ;
+    //    }
+    }
+    
+    
+    
     public Result all(){
         List<Livre> liste = Livre.find.all();
         return ok(all.render(liste));
+    }
+    
+    public Result alladh(){
+        List<Adherent> listeadh = Adherent.find.all();
+        return ok(alladh.render(listeadh));
     }
     
     public Result show (Long id) {
@@ -71,10 +98,21 @@ public class HomeController extends Controller {
         return ok(show.render(l)) ;
     }
     
+    public Result showadh (Long id) {
+        Adherent a = Adherent.find.byId(id) ;
+        return ok(showadh.render(a)) ;
+    }
+    
     public Result update(Long id, Http.Request request){
         livreForm = formFactory.form(Livre.class) ;
         Livre l = Livre.find.byId(id);
         return ok(update.render(livreForm, id, request, messagesApi.preferred(request)));
+    }
+
+    public Result updateadh(Long id, Http.Request request){
+        adherentForm = formFactory.form(Adherent.class) ;
+        Adherent a = Adherent.find.byId(id);
+        return ok(updateadh.render(adherentForm, id, request, messagesApi.preferred(request)));
     }
 
     public Result updateOk(Long id, Http.Request request){
@@ -91,9 +129,30 @@ public class HomeController extends Controller {
         }
     }
     
+    public Result updateOkadh(Long id, Http.Request request){
+        adherentForm = formFactory.form(Adherent.class) ;
+        adherentForm = adherentForm.bindFromRequest(request) ;
+        if (adherentForm.hasErrors()){
+            return badRequest(updateadh.render(adherentForm,id,request, messagesApi.preferred(request)));
+        }
+        else{
+            Adherent a = adherentForm.get();
+            a.setIdAdh(id);
+            a.update();
+            return redirect(routes.HomeController.alladh());
+        }
+    }
+    
     public Result delete(Long id){
         Livre livre=Livre.find.byId(id);
         livre.delete();
         return redirect(routes.HomeController.all());
     }
+    public Result deleteadh(Long id){
+        Adherent adherent=Adherent.find.byId(id);
+        adherent.delete();
+        return redirect(routes.HomeController.alladh());
+    }
+    
+    
 }

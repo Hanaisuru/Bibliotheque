@@ -1,0 +1,8 @@
+@(b: Adherent) 
+@main("Adherent ..."){
+    Adhérent(e) @b.getNom @b.getPrenom, adhérent(e) pendant @b.getNbAnneeAdh année(s), Adhere: @b.getAdherentMtn sauvegardé 
+<br>
+<h1>Voir la liste des adhérents? <a href="@routes.HomeController.alladh">Cliquez ici!</a></h1>
+<br>
+<h1>Ajouter un(e) Adhérent(e)? <a href="@routes.HomeController.sayhelloformadh">Cliquez ici!</a> </h1>
+}

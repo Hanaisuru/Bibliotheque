@@ -8,11 +8,14 @@
 GET     /                                   controllers.HomeController.index()
 
 GET     /all                                controllers.HomeController.all()
+GET     /alladh                                controllers.HomeController.alladh()
 GET     /sayhello                           controllers.HomeController.sayhello()
 GET     /helloworld                         controllers.HomeController.helloworld(fname:String ?="toto")
 
 GET     /sayhelloform                       controllers.HomeController.sayhelloform(request : Request)
+GET     /sayhelloformadh                       controllers.HomeController.sayhelloformadh(request : Request)
 POST    /helloworldform                     controllers.HomeController.helloworldform(request : Request)
+POST    /helloworldformadh                     controllers.HomeController.helloworldformadh(request : Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
@@ -20,6 +23,11 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 GET /show/:id   controllers.HomeController.show(id: Long)
 GET /delete/:id   controllers.HomeController.delete(id: Long)
 
+GET /showadh/:id    controllers.HomeController.showadh(id: Long)
+GET /deleteadh/:id   controllers.HomeController.deleteadh(id: Long)
 
 GET /update/:id controllers.HomeController.update(id: Long, request: Request)
 POST /updateOk/:id controllers.HomeController.updateOk(id: Long, request: Request)
+
+GET /updateadh/:id controllers.HomeController.updateadh(id: Long, request: Request)
+POST /updateOkadh/:id controllers.HomeController.updateOkadh(id: Long, request: Request)

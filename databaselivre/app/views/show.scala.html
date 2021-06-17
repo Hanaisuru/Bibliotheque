@@ -1,8 +1,11 @@
 @(l: Livre)
-@main("Liste des personnes") {
-<Title>@l.getId</Title> 
+@main("Livre") {
+<Title>@l.getTitre</Title> 
 
- @l.getTitre, @l.getAuteur, @l.getAnneeParue, @l.getPrix 
+ @l.getTitre, @l.getAuteur, @l.getAnneeParue, @l.getPrix
+
+
  <a href="@routes.HomeController.update(l.getId)">Modifier ce livre</a> <br>
-<a href="@routes.HomeController.delete(l.getId)"><button name="delete">Supprimer le livre</button></a>
+<a href="@routes.HomeController.delete(l.getId)"><button name="delete">Supprimer le livre</button></a><br>
+<a href="all.scala.html">Tout voir</a>
 }

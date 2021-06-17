@@ -1,0 +1,11 @@
+ @(liste: List[Adherent])
+@main("Liste des Adhérents") {
+<Title>Liste des @liste.size() personnes</Title> 
+<h1>Ajouter un(e) Adhérent(s)? <a href="@routes.HomeController.sayhelloformadh">Cliquez ici!</a> </h1>
+<ol>
+  @for(adh <- liste) {
+            <li> <a href ="@routes.HomeController.showadh(adh.getIdAdh)">Personne: @adh.getNom @adh.getPrenom, Adhere depuis @adh.getNbAnneeAdh, adhère actuellement: @adh.getAdherentMtn</a > <a href="@routes.HomeController.deleteadh(adh.getIdAdh)"><button name="delete">Supprimer cette personne</button></a> </li >
+ 
+   }
+</ol> 
+}

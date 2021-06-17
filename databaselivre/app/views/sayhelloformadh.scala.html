@@ -1,0 +1,12 @@
+@import play.mvc.Http.Request
+@(aForm: Form[Adherent])(implicit request: Request, messages: play.i18n.Messages)
+
+@main("Merci de renseigner les informations de cette personne") {
+@helper.form(action = routes.HomeController.helloworldformadh) {
+@helper.CSRF.formField
+@helper.inputText(aForm("nom"))
+@helper.inputText(aForm("prenom"))
+@helper.inputText(aForm("nbAnneeAdh"),Symbol("_label")->("Nombre d'années d'adhérence"))
+@helper.select(aForm("adherentMtn"),options=Seq("Oui"->"Oui","Non"->"Non"),Symbol("_label")->("Adhérent(e) actuellement?"))
+<input type="submit" value="Valider"/> }
+}
